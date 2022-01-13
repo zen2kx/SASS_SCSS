@@ -1,0 +1,40 @@
+/* 
+    Vererbung @extend
+    im CSS ergibt sich dadurch .box1, .box2 == Performance-Vorteil
+*/
+%my-appearance {
+    border: 1px solid black;
+    padding: 10px; 
+}
+
+%mine {
+    border: 2px solid;
+}
+// .box1{
+//      @extend %my-appearance;
+// }
+
+// .box2{
+//     @extend %my-appearance;
+// }
+.box1 {
+    @extend %my-appearance; 
+    @extend %mine;
+}
+
+// Debug Meldungen ausgeben (@debug, @warn, @error)
+.box2 {
+    $width: -1px;
+    @debug "Hallo Welt";
+    @warn "oh oh oh... das könnte schief gehen... Breite ist "+#{$width};
+    @extend %my-appearance;    
+    @extend %mine;
+}
+
+.box3 {
+    background-color: beige;
+    // & Selektieren von Selektor außen ".box3"
+    &:hover {
+        background-color: greenyellow;
+    }
+}

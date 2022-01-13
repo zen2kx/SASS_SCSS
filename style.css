@@ -1,0 +1,78 @@
+@charset "UTF-8";
+body {
+  font: 100% Roboto, Arial, sans-serif;
+  color: blue;
+  background: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+/*  
+    $color: $primary-color
+    $width: 3px 
+    Standardwert wenn kein Parameter übergeben
+    Interpolarisationsoperator
+    Selektiert alles was p + Klasse hat
+*/
+p.klasse {
+  background-color: #777;
+}
+
+/* 
+    !default = Defaultwert wird genommen und 
+    kann nicht überschrieben werden, wenn 
+    es einen Defaultwert gibt.
+*/
+body {
+  font: 100% Roboto, Arial, sans-serif;
+  color: blue;
+}
+
+div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-flex;
+}
+
+div a {
+  border-width: 4px;
+  border-color: #777;
+  border-style: solid;
+}
+
+div a p {
+  color: #777;
+}
+
+div a b {
+  color: antiquewhite;
+}
+
+div p {
+  border-width: 0px;
+  border-color: blue;
+  border-style: solid;
+}
+
+div p a {
+  color: #777;
+}
+
+div p span {
+  color: antiquewhite;
+}
+
+.wrapper {
+  background-color: antiquewhite;
+}
+
+@media screen and (orientation: landscape) {
+  .wrapper {
+    background-color: lightgreen;
+  }
+}
+/*# sourceMappingURL=style.css.map */

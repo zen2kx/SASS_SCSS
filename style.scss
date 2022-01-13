@@ -1,0 +1,82 @@
+@import "variables";
+@import "main";
+@import "link";
+
+$third-color: red !default;
+
+// Media Queries
+$orientation-attribute: orientation;
+$orientation-style: landscape;
+$media-attribute: background-color;
+$media-attribute-color-portrait: lightgreen;
+$media-attribute-color-landscape: antiquewhite;
+
+$my-class: klasse;
+$my-attribute: background-color;
+
+@mixin flex {
+    display: flex;
+    display: -webkit-flex;
+}
+@mixin autoalign{
+    margin: {
+        left: auto;
+        right: auto;
+    }
+}
+/*  
+    $color: $primary-color
+    $width: 3px 
+    Standardwert wenn kein Parameter übergeben
+    Interpolarisationsoperator
+    Selektiert alles was p + Klasse hat
+*/
+p.#{$my-class} {
+    #{$my-attribute}:$secondary-color;
+}
+/* 
+    !default = Defaultwert wird genommen und 
+    kann nicht überschrieben werden, wenn 
+    es einen Defaultwert gibt.
+*/
+@mixin my-border($width: 3px, $color: $primary-color){
+    border: {
+        width: round($width/3);
+        color: $color;
+        style: solid; 
+    }
+}
+body {
+    font: 100% $font-stack;
+    color: $third-color;   
+}
+
+div {
+    @include flex;
+    // @include autoalign;
+    a {
+        @include my-border(11px, $secondary-color);
+        p {
+            color: $secondary-color;
+        }
+        b {
+            color: antiquewhite;
+        }
+    }
+    p {
+        @include my-border(1px, $third-color);
+        a {
+            color: $secondary-color;
+        }
+        span {
+            color: antiquewhite;
+        }
+    }
+}
+
+.wrapper {
+    background-color: $media-attribute-color-landscape;
+    @media screen and (#{$orientation-attribute}: $orientation-style){
+        #{$media-attribute}: $media-attribute-color-portrait;
+    } 
+}

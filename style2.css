@@ -1,0 +1,73 @@
+body {
+  border: 10px solid black;
+}
+
+.box1 {
+  width: 100px;
+}
+
+.box2 {
+  width: 200px;
+}
+
+.box3 {
+  background-color: aqua;
+  width: 300px;
+}
+
+.box4 {
+  width: 400px;
+}
+
+.row .column-1 {
+  width: 10px;
+}
+
+.row .column-2 {
+  width: 20px;
+}
+
+.row .column-3 {
+  width: 30px;
+}
+
+.row .column-4 {
+  width: 40px;
+}
+
+div {
+  border: 2px solid black;
+}
+
+.bg-black {
+  background-color: black;
+  cursor: pointer;
+}
+
+.bg-red {
+  background-color: red;
+  cursor: move;
+}
+
+.bg-green {
+  background-color: green;
+  cursor: pointer;
+}
+
+.bg-blue {
+  background-color: blue;
+  cursor: default;
+}
+
+h1 {
+  font-size: 10px;
+}
+
+h2 {
+  font-size: 5px;
+}
+
+h3 {
+  font-size: 2px;
+}
+/*# sourceMappingURL=style2.css.map */

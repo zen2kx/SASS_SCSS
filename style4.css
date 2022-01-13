@@ -1,0 +1,43 @@
+a {
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.5), 1px 1px 1px rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  color: #00e400;
+}
+
+div {
+  background: #ffc264;
+  width: 75%;
+}
+
+@media (min-width: 1281px) {
+  div {
+    width: 60%;
+  }
+}
+
+@media (min-width: 768px) {
+  div {
+    width: 80%;
+  }
+}
+
+@media (min-width: 320px) {
+  div {
+    width: 95%;
+  }
+}
+
+.wrapper .box1 {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 1s, opacity 1s;
+  transition: visibility 1s, opacity 1s;
+}
+
+.wrapper:hover .box1 {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: visibility 1s, opacity 1s;
+  transition: visibility 1s, opacity 1s;
+}
+/*# sourceMappingURL=style4.css.map */

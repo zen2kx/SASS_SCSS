@@ -1,0 +1,51 @@
+
+$border-gewuenscht: true;
+$my-map: (h1: 10px, h2: 5px, h3: 2px);
+// If/Else Bedingungen
+// $width: if($border-gewuenscht, 10px, 0px);
+body {
+    // border: $width solid black;
+    // Alternative Schreibweise
+    @if $border-gewuenscht {
+        border: 10px solid black;
+    }
+}
+
+// For-Schleifen
+// Automatisch generieren von Klassen
+@for $i from 1 through 4{
+    .box#{$i} {
+        @if($i == 3){
+            background-color: aqua;
+        }
+        width: 100px * $i;
+    }
+}
+
+@for $i from 1 through 4{ 
+    .row .column-#{$i} {
+        width: 10px * $i;
+    }
+}
+
+div {
+    border: 2px solid black;
+}
+
+// For-Each-Schleifen
+@each $color, $cursor in 
+    (black, pointer), 
+    (red, move), 
+    (green,pointer), 
+    (blue,default) {
+    .bg-#{$color}{
+        background-color: $color;
+        cursor: $cursor;
+    }
+}
+
+@each $el, $val in $my-map{
+    #{ $el }{
+        font-size: $val;
+    }
+}

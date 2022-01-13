@@ -1,0 +1,21 @@
+/* 
+    Vererbung @extend
+    im CSS ergibt sich dadurch .box1, .box2 == Performance-Vorteil
+*/
+.box1, .box2 {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.box1, .box2 {
+  border: 2px solid;
+}
+
+.box3 {
+  background-color: beige;
+}
+
+.box3:hover {
+  background-color: greenyellow;
+}
+/*# sourceMappingURL=style3.css.map */

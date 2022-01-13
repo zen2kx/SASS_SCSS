@@ -1,0 +1,128 @@
+$my-color: #006400;
+$wahr: true;
+$falsch: false;
+$farbschema: red, green, blue;
+$farbschema2: #ff0, #0ff, #f0f;
+// Join = Listen zusammenfügen
+$das-neue-farbschema: join($farbschema, $farbschema2);
+// Set-Nth = Überschreiben von bestehenden Werten
+$das-neue-farbschema: set-nth($das-neue-farbschema,4, aqua);
+// Append = Wert hinzufügen
+$das-neue-farbschema: append($das-neue-farbschema, fuchsia);
+// Fonts
+$font-size: 20px;
+$link-font-size: 20px;
+// $map = Definition von Listen
+$map: (meine-eigene-farbe: #ff0, rot: #f00);
+$map2: (yellow, #ff0);
+// $neue-map: map-merge($map, $map2);
+// Elemente entfernen
+$reduzierte-map: map-remove($map, red);
+
+@mixin linkColor($color){
+    color: $color;
+    &:hover, &:active, &:focus {
+        /* 
+        "lighten" = SCSS Funktion
+        "darken" ...
+        "mix" ...
+        "grayscale" ...
+        // @include linkColor(#ccc);
+        */
+        color: darken($color,25%)
+    }
+}
+
+@mixin vendorPrefix($attribute, $value){
+    @each $prefix in -webkit, -moz, -ms -o, ""{
+         #{$prefix}-#{$attribute}: $value;
+     }
+}
+
+@mixin stanzeffekt($opacity, $opacity2){
+    text-shadow: -1px -1px 1px rgba(255,255,255,$opacity), 1px 1px 1px rgba(0,0,0,$opacity2);
+}
+
+@mixin breakpoint($medium){
+    @if $medium == desktop {
+        @media (min-width: 1281px){
+            // Schlüsselwort @content akzeptiert Argumente
+            @content;
+        }
+    }
+    @else if $medium == tablet {
+        @media(min-width: 768px){
+            @content;
+        }
+    }
+    @else if $medium == mobile {
+        @media(min-width: 320px){
+            @content;
+        }
+    }
+}
+
+@mixin toggle($show){
+    @if $show {
+        visibility: visible;
+        opacity: 1;
+        transition: visibility 1s, opacity 1s;
+    }
+    @else if $show == false {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 1s, opacity 1s;
+    }
+}
+
+@mixin setColor($color){
+    @if map-has-key($map, $color){
+        color: map-get($map, $color);
+    }
+    @else {
+        color: black;
+    }
+}
+
+a {
+    @include stanzeffekt(0.5,0.5);
+    // Unitless = wenn kein Wert vorhanden (px, ...)
+    @if unitless($font-size) and not unitless($link-font-size) {
+        font-size: $font-size * $link-font-size;
+    }
+    @else if unitless($link-font-size){
+        font-size: $font-size * $link-font-size;
+    }
+    @else if not unitless($font-size){
+        font-size: $font-size;
+    }
+    @else {
+        font-size: $font-size+"px";
+    }
+
+    // Nth -> Variable Zahl -> Liste, Index (0-Index)
+    // color: nth($das-neue-farbschema,7)
+    // @include setColor("rot");
+    @if variable-exists(my-color) {
+        color: lighten($my-color, 25%);
+    }
+    @else {
+        color: black;
+    }
+}
+
+div {
+    background: #ffc264;
+    width: 75%;
+    @include breakpoint(desktop){ width:60% }
+    @include breakpoint(tablet){ width:80% }
+    @include breakpoint(mobile){ width:95% }
+}
+
+.wrapper .box1 {
+    @include toggle($falsch);
+}
+
+.wrapper:hover .box1{
+    @include toggle($wahr);
+}
